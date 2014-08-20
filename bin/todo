@@ -1,0 +1,80 @@
+#!/usr/bin/env node
+
+var join = require('path').join;
+
+var Storage = require('../lib/storage');
+var Todos = require('../lib/todos');
+
+var storage = new Storage(join(process.env.HOME, '.todo.json'));
+var todos = new Todos(storage);
+
+/**
+ * List of commands.
+ */
+var commands = {};
+
+commands.help = function() {
+  [
+    '',
+    '  todo: A dead-simple todo cli app',
+    '',
+    '  Usage:',
+    '',
+    '    todo help                Print help',
+    '    todo add Go shopping     Create a new todo item',
+    '    todo ls                  Print all pending todo items',
+    '    todo rm 1                Remove #1 item',
+    '',
+  ].forEach(function(line) {
+    console.log(line);
+  });
+}
+
+/**
+ * List all todo items.
+ *
+ * Example:
+ *
+ *     $ todo ls
+ * 
+ */
+commands.ls = function() {
+  todos.list().forEach(function(todo, i) {
+    console.log('%d. %s', i+1, todo.desc);
+  });
+}
+
+/**
+ * Add a new todo item.
+ *
+ * Example:
+ *
+ *     $ todo add Go shopping
+ * 
+ * @param {Array} argv
+ */
+commands.add = function(argv) {
+  todos.add(argv.join(' '));
+}
+
+/**
+ * Remove a todo item.
+ *
+ * Example:
+ *
+ *     $ todo rm 1
+ * 
+ * @param {Array} argv
+ */
+commands.rm = function(argv) {
+  todos.remove(argv[0]);
+}
+
+/**
+ * Parse command line arguments
+ */
+
+var argv = process.argv.slice(2);
+var command = argv.shift() || 'ls';
+
+commands[command](argv);
