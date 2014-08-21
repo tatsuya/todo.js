@@ -1,5 +1,5 @@
-todo
-====
+todo.js
+=======
 
 A dead-simple todo cli app.
 
