@@ -133,4 +133,8 @@ commands.clear = function() {
 var argv = process.argv.slice(2);
 var command = argv.shift() || 'ls';
 
-commands[command](argv);
+if (!commands[command]) {
+  commands.help();
+} else {
+  commands[command](argv);
+}
