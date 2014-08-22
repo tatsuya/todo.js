@@ -23,6 +23,8 @@ commands.help = function() {
     '    todo help                Print help',
     '    todo add Go shopping     Create a new todo item',
     '    todo ls                  Print all pending todo items',
+    '    todo check 1             Mark #1 as completed',
+    '    todo undo 1              Revert #1 to pending',
     '    todo rm 1                Remove #1 item',
     '',
   ].forEach(function(line) {
@@ -39,9 +41,49 @@ commands.help = function() {
  * 
  */
 commands.ls = function() {
+  if (!todos.list().length) {
+    return;
+  }
+
+  var symbols = {
+    active: '-',
+    completed: '✓'
+  };
+
+  console.log('');
   todos.list().forEach(function(todo, i) {
-    console.log('%d. %s', i+1, todo.desc);
+    var symbol = todo.completed ? symbols.completed : symbols.active;
+    console.log('%d. [ %s ]  %s', i+1, symbol, todo.desc);
   });
+  console.log('');
+}
+
+/**
+ * Complete a todo item.
+ *
+ * Example:
+ *
+ *     $ todo check 1
+ *
+ * @param {Array} argv
+ */
+
+commands.check = function(argv) {
+  todos.complete(argv[0]);
+}
+
+/**
+ * Undo a completed todo item.
+ *
+ * Example:
+ *
+ *     $ todo undo 1
+ *
+ * @param {Array} argv
+ */
+
+commands.undo = function(arvg) {
+  todos.undo(argv[0]);
 }
 
 /**
