@@ -6,6 +6,12 @@ var tmp = join(__dirname, 'tmp', 'storage.json');
 var Storage = require('../lib/storage');
 
 describe('Storage', function() {
+  beforeEach(function() {
+    if (fs.existsSync(tmp)) {
+      fs.unlinkSync(tmp);
+    }
+  });
+
   describe('read', function() {
     it('should read and parse the database file', function() {
       var data = { foo: 'bar'};
@@ -22,5 +28,21 @@ describe('Storage', function() {
       storage.write(data);
       JSON.parse(fs.readFileSync(tmp, 'utf8')).should.eql(data);
     }); 
+  });
+
+  describe('clear', function() {
+    it('should remove the database file', function() {
+      var data = { foo: 'baz'};
+      var storage = new Storage(tmp);
+      storage.write(data);
+      JSON.parse(fs.readFileSync(tmp, 'utf8')).should.eql(data);
+      storage.clear();
+      fs.existsSync(tmp).should.be.false;
+    });
+
+    it('should ignore when the database file is not created', function() {
+      var storage = new Storage(tmp);
+      storage.clear();
+    });
   });
 });
