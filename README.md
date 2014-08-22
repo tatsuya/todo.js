@@ -16,6 +16,7 @@ A dead-simple todo cli app.
     todo check 1             Mark #1 as completed
     todo undo 1              Revert #1 to pending
     todo rm 1                Remove #1 item
+    todo clear               Destroy all todo items
 ```
 
 ## Development

@@ -26,6 +26,7 @@ commands.help = function() {
     '    todo check 1             Mark #1 as completed',
     '    todo undo 1              Revert #1 to pending',
     '    todo rm 1                Remove #1 item',
+    '    todo clear               Destroy all todo items',
     '',
   ].forEach(function(line) {
     console.log(line);
@@ -110,6 +111,19 @@ commands.add = function(argv) {
  */
 commands.rm = function(argv) {
   todos.remove(argv[0]);
+}
+
+/**
+ * Crear all todo items.
+ *
+ * Example:
+ *
+ *     $ todo clear
+ *
+ */
+
+commands.clear = function() {
+  todos.clear();
 }
 
 /**

@@ -70,4 +70,15 @@ describe('Todos', function() {
       (function() { todos.remove(1); }).should.throw('Cannot find a todo item with id "1"');
     });
   });
+
+  describe('clear', function() {
+    it('should make todo list empty', function() {
+      todos.list().should.have.length(0);
+      todos.add('foo');
+      todos.add('bar');
+      todos.list().should.have.length(2);
+      todos.clear();
+      todos.list().should.have.length(0);
+    });
+  });
 });
