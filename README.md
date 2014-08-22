@@ -1,6 +1,8 @@
 todo.js
 =======
 
+[![Build Status](https://travis-ci.org/tatsuyaoiw/todo.js.svg?branch=master)](https://travis-ci.org/tatsuyaoiw/todo.js)
+
 A dead-simple todo cli app.
 
 ## Usage
