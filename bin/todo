@@ -54,7 +54,7 @@ commands.ls = function() {
   console.log('');
   todos.list().forEach(function(todo, i) {
     var symbol = todo.completed ? symbols.completed : symbols.active;
-    console.log('%d. [ %s ]  %s', i+1, symbol, todo.desc);
+    console.log('%d. [ %s ]  %s', i+1, symbol, todo.title);
   });
   console.log('');
 }
