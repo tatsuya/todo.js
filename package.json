@@ -1,15 +1,26 @@
 {
   "name": "todo.js",
   "version": "0.0.1",
-  "private": true,
-  "devDependencies": {
-    "mocha": "~1.21.4",
-    "should": "~4.0.4"
+  "description": "A dead-simple todo cli app",
+  "bin": {
+    "todo": "bin/todo"
   },
   "scripts": {
     "test": "make test"
   },
-  "bin": {
-    "todo": "bin/todo"
-  }
+  "devDependencies": {
+    "mocha": "~1.21.4",
+    "should": "~4.0.4"
+  },
+  "preferGlobal": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tatsuyaoiw/todo.js.git"
+  },
+  "keywords": [
+    "todo",
+    "cli"
+  ],
+  "author": "Tatsuya Oiwa <tatsuyaoiw@gmail.com>",
+  "license": "MIT"
 }
