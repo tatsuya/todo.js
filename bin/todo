@@ -46,6 +46,7 @@ commands.help = function() {
 
 commands.ls = function() {
   if (!todos.list().length) {
+    this.help();
     return;
   }
 
