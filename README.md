@@ -3,7 +3,15 @@ todo.js
 
 [![Build Status](https://travis-ci.org/tatsuyaoiw/todo.js.svg?branch=master)](https://travis-ci.org/tatsuyaoiw/todo.js)
 
-A dead-simple todo cli app.
+A dead-simple todo cli app. All todo items will be stored in a JSON file `~/.todo-js.json`.
+
+## Installation
+
+Install from npm:
+
+```
+$ npm install -g todo.js
+```
 
 ## Usage
 
@@ -22,10 +30,11 @@ A dead-simple todo cli app.
     todo clear                 Destroy all todo items
 ```
 
-## Development
+## Running tests
 
-### Running test
+Install dependencies and run tests:
 
 ```
+$ npm install
 $ make test
 ```
