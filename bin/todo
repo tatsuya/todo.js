@@ -11,6 +11,7 @@ var todos = new Todos(storage);
 /**
  * List of commands.
  */
+
 var commands = {};
 
 commands.help = function() {
@@ -20,13 +21,14 @@ commands.help = function() {
     '',
     '  Usage:',
     '',
-    '    todo help                Print help',
-    '    todo add Go shopping     Create a new todo item',
-    '    todo ls                  Print all pending todo items',
-    '    todo check 1             Mark #1 as completed',
-    '    todo undo 1              Revert #1 to pending',
-    '    todo rm 1                Remove #1 item',
-    '    todo clear               Destroy all todo items',
+    '    todo help                  Print help',
+    '    todo add Go shopping       Create a new todo item',
+    '    todo ls                    Print all pending todo items',
+    '    todo check 1               Mark #1 as completed',
+    '    todo undo 1                Revert #1 to pending',
+    '    todo rename 1 Go surfing   Rename the title of #1',
+    '    todo rm 1                  Remove #1 item',
+    '    todo clear                 Destroy all todo items',
     '',
   ].forEach(function(line) {
     console.log(line);
@@ -41,6 +43,7 @@ commands.help = function() {
  *     $ todo ls
  * 
  */
+
 commands.ls = function() {
   if (!todos.list().length) {
     return;
@@ -88,6 +91,23 @@ commands.undo = function(arvg) {
 }
 
 /**
+ * Rename a todo item.
+ *
+ * Example:
+ *
+ *     $ todo rename 1 Go surfing
+ * 
+ * @param  {Array} argv
+ */
+
+commands.rename = function(argv) {
+  var id = argv.shift();
+  var title = argv.join(' ');
+  todos.rename(id, title);
+  this.ls();
+}
+
+/**
  * Add a new todo item.
  *
  * Example:
@@ -96,6 +116,7 @@ commands.undo = function(arvg) {
  * 
  * @param {Array} argv
  */
+
 commands.add = function(argv) {
   todos.add(argv.join(' '));
 }
@@ -109,6 +130,7 @@ commands.add = function(argv) {
  * 
  * @param {Array} argv
  */
+
 commands.rm = function(argv) {
   todos.remove(argv[0]);
 }

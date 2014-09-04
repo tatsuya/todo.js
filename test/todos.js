@@ -40,7 +40,7 @@ describe('Todos', function() {
   });
 
   describe('undo', function() {
-    it('should undo a todo itme', function() {
+    it('should undo a todo item', function() {
       todos.list().should.have.length(0);
       todos.add('foo');
       todos.list()[0].completed.should.be.false;
@@ -53,6 +53,21 @@ describe('Todos', function() {
     it('should throw error when it cannot find the given todo item', function() {
       todos.list().should.have.length(0);
       (function() { todos.undo(1); }).should.throw('Cannot find a todo item with id "1"');
+    });
+  });
+
+  describe('rename', function() {
+    it('should rename a todo item', function() {
+      todos.list().should.have.length(0);
+      todos.add('foo');
+      todos.list()[0].title.should.eql('foo');
+      todos.rename(1, 'bar');
+      todos.list()[0].title.should.eql('bar');
+    });
+
+    it('should throw error when it cannot find the given todo item', function() {
+      todos.list().should.have.length(0);
+      (function() { todos.rename(1, 'bar'); }).should.throw('Cannot find a todo item with id "1"');
     });
   });
 
