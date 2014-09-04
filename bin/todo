@@ -5,7 +5,7 @@ var join = require('path').join;
 var Storage = require('../lib/storage');
 var Todos = require('../lib/todos');
 
-var storage = new Storage(join(process.env.HOME, '.todo.json'));
+var storage = new Storage(join(process.env.HOME, '.todo-js.json'));
 var todos = new Todos(storage);
 
 /**
