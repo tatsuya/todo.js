@@ -5,6 +5,8 @@ todo.js
 
 A dead-simple todo cli app. All todo items will be stored in a JSON file `~/.todo-js.json`.
 
+![](demo.gif)
+
 ## Installation
 
 Install from npm:
