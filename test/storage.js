@@ -1,4 +1,7 @@
-var should = require('should');
+/*jshint expr:true */
+
+'use strict';
+
 var fs = require('fs');
 var join = require('path').join;
 var tmp = join(__dirname, 'tmp', 'storage.json');
@@ -27,7 +30,7 @@ describe('Storage', function() {
       var storage = new Storage(tmp);
       storage.write(data);
       JSON.parse(fs.readFileSync(tmp, 'utf8')).should.eql(data);
-    }); 
+    });
   });
 
   describe('clear', function() {

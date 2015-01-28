@@ -41,7 +41,7 @@ commands.help = function() {
  * Example:
  *
  *     $ todo ls
- * 
+ *
  */
 
 commands.ls = function() {
@@ -97,7 +97,7 @@ commands.undo = function(arvg) {
  * Example:
  *
  *     $ todo rename 1 Go surfing
- * 
+ *
  * @param  {Array} argv
  */
 
@@ -114,7 +114,7 @@ commands.rename = function(argv) {
  * Example:
  *
  *     $ todo add Go shopping
- * 
+ *
  * @param {Array} argv
  */
 
@@ -128,7 +128,7 @@ commands.add = function(argv) {
  * Example:
  *
  *     $ todo rm 1
- * 
+ *
  * @param {Array} argv
  */
 

@@ -1,4 +1,7 @@
-var should = require('should');
+/*jshint expr:true */
+
+'use strict';
+
 var join = require('path').join;
 var tmp = join(__dirname, 'tmp', 'storage.json');
 

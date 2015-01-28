@@ -6,11 +6,13 @@
     "todo": "bin/todo"
   },
   "scripts": {
+    "lint": "jshint bin lib test",
     "test": "make test"
   },
   "devDependencies": {
     "mocha": "~1.21.4",
-    "should": "~4.0.4"
+    "should": "~4.0.4",
+    "jshint": "~2.6.0"
   },
   "preferGlobal": true,
   "repository": {

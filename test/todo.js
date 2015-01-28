@@ -1,3 +1,7 @@
+/*jshint expr:true */
+
+'use strict';
+
 var Todo = require('../lib/todo');
 
 describe('Todo', function() {
